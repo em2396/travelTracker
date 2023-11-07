@@ -7,10 +7,30 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <section class="travel-info">
+    <aside class="content" id="dashboard">
+      <h1>Dashboard</h1>
+      <h2>Username</h2>
+      <button>Add New Trip</button>
+    </aside>
+    <main class="content" id="main">
+      <header>
+        <h1>The Travel Agency</h1>
+        <h2>Your vacation starts here</h2>
+      </header>
+      <button class="tab-bar" id="past">Past</button>
+      <button class="tab-bar" id="upcoming">Upcoming</button>
+      <button class="tab-bar" id="Pending">Pending</button>
+      <button class="tab-bar" id="spending">Spending</button>
+      <section class="hidden" id="login">
+        <label for="usernameInput" class="labels">Username:</label>
+        <input type="text" placeholder="John Smith" required/>
+        <label for="password">Password:</label>
+        <input type="text" required/>
+        <button id="submit">Submit</button>
+      </section>
+    </main>
+  </section>
   <script src="bundle.js"></script>
-
 </body>
 </html>
