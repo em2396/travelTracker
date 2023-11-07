@@ -4,6 +4,8 @@ body {
   background-attachment: fixed;
 }
 
+
+/* Page when logged in */
 .travel-info {
   display: flex;
   flex-direction: row;
@@ -12,11 +14,23 @@ body {
   margin-left: 280px;
 }
 
+#travelAgency {
+  font-family: 'Dancing Script', cursive;
+  font-size: 70px;
+  margin: 0;
+  margin-top: 40px;
+}
+
+#yourVacation {
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+}
+
 
 #dashboard {
   width: 20%;
   height: 80vh;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   color: white;
   text-align: center;
 }
@@ -33,12 +47,42 @@ body {
 #login {
   display: flex; 
   flex-direction: column;
-  border-radius: 10px;
-  border-color: black;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgb(237, 230, 230);
+  background-color: white;
   width: 50%;
+  height: 50vh;
+  padding: 40px;
+  margin-top: 200px;
+  margin-left: 550px;
+  text-align: center;
+  font-size: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* box-shadow:; */
 }
 
+input {
+  height: 50px;
+  width: 300px;
+  margin-left: 30px;
+}
 
-/* .hidden {
+#submit {
+  margin-top: 50px;
+  height: 50px;
+  width: 200px;
+  color: white;
+  background-color: rgb(0, 118, 37);
+  border-color: rgb(0, 118, 37);
+  border-radius: 30px;
+  font-size: 25px;
+}
+
+.labels {
+  margin: 10px;
+}
+
+.hidden {
   display: none; 
-} */
+}
