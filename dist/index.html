@@ -4,10 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <section class="travel-info">
+  <section class="login" id="login">
+    <label for="usernameInput" class="labels">Username:
+    <input type="text" placeholder="John Smith" required/>
+    </label>
+    <label for="password" class="labels">Password:
+    <input type="password" required/>
+    </label>
+    <button id="submit">Submit</button>
+  </section>
+  <section class="travel-info hidden">
     <aside class="content" id="dashboard">
       <h1>Dashboard</h1>
       <h2>Username</h2>
@@ -15,19 +27,14 @@
     </aside>
     <main class="content" id="main">
       <header>
-        <h1>The Travel Agency</h1>
-        <h2>Your vacation starts here</h2>
+        <h1 id="travelAgency">The Travel Agency</h1>
+        <h2 id="yourVacation">Your vacation starts here</h2>
       </header>
-      <button class="tab-bar" id="past">Past</button>
-      <button class="tab-bar" id="upcoming">Upcoming</button>
-      <button class="tab-bar" id="Pending">Pending</button>
-      <button class="tab-bar" id="spending">Spending</button>
-      <section class="hidden" id="login">
-        <label for="usernameInput" class="labels">Username:</label>
-        <input type="text" placeholder="John Smith" required/>
-        <label for="password">Password:</label>
-        <input type="text" required/>
-        <button id="submit">Submit</button>
+      <section class="button-tab">
+        <button class="tab-bar" id="past">Past</button>
+        <button class="tab-bar" id="upcoming">Upcoming</button>
+        <button class="tab-bar" id="Pending">Pending</button>
+        <button class="tab-bar" id="spending">Spending</button>
       </section>
     </main>
   </section>
