@@ -1,3 +1,44 @@
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background-image: url('/Users/emaleepoellot/mod2/finalSolo/travelTracker/sean-oulashin-KMn4VEeEPR8-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
+
+.travel-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 200px;
+  margin-top: 120px;
+  margin-left: 280px;
+}
+
+
+#dashboard {
+  width: 20%;
+  height: 80vh;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#main {
+  width: 60%;
+  height: 80vh;
+  text-align: center;
+  background-color: white;
+  /* margin-left: none; */
+  /* margin-top: 100px; */
+}
+
+#login {
+  display: flex; 
+  flex-direction: column;
+  border-radius: 10px;
+  border-color: black;
+  width: 50%;
+}
+
+
+/* .hidden {
+  display: none; 
+} */
