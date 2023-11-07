@@ -1,11 +1,20 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+import { allDestinations, allTravelers, allTrips, fetchTravelerInfo } from './apiCalls';
 import './css/styles.css';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+const allTravelersData = fetchTravelerInfo(allTravelers);
+// const currentTraveler;
+const allTripsData = fetchTravelerInfo(allTrips);
+const allDestinationsData = fetchTravelerInfo(allDestinations);
+
+console.log(allTripsData, 'all trips data')
+console.log(allTravelersData, 'all travelers data');
+console.log(allDestinationsData, 'destinations data');
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+//Create queryselectors for username and password inputs. When the submit button is clicked, the page will open for them to see their data
+//
+//trips data is an array of objects: { id: 1, userID: 44, destinationID: 49, travelers: 1, date: '2022/09/16'}
+//traveler data is an array of 50 traveler objects: { id: 1, name: 'Hame Leadbeater', travelerType: 'relaxer'} 
+//destination data: {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: 'url'}
+
+// const getCurrentTraveler = 
