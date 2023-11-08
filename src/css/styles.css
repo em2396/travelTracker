@@ -4,14 +4,24 @@ body {
   background-attachment: fixed;
 }
 
+.layout {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Page when logged in */
 .travel-info {
   display: flex;
   flex-direction: row;
-  margin-left: 200px;
+  width: 75%;
+  /* margin-left: 200px;
   margin-top: 120px;
-  margin-left: 280px;
+  margin-left: 280px; */
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
 }
 
 #travelAgency {
@@ -33,13 +43,21 @@ body {
   background-color: rgb(0, 0, 0);
   color: white;
   text-align: center;
+  @media (max-width: 750px) {
+    width: 100%;
+    height: initial;
+  }
 }
 
 #main {
-  width: 60%;
+  width: 80%;
   height: 80vh;
   text-align: center;
   background-color: white;
+  @media (max-width: 750px) {
+    width: 100%;
+    /* height: initial; */
+  }
   /* margin-left: none; */
   /* margin-top: 100px; */
 }
@@ -54,18 +72,21 @@ body {
   width: 50%;
   height: 50vh;
   padding: 40px;
-  margin-top: 200px;
-  margin-left: 550px;
+  /* margin-top: 200px;
+  margin-left: 550px; */
   text-align: center;
   font-size: 45px;
   font-family: Arial, Helvetica, sans-serif;
   /* box-shadow:; */
+  &.hidden {
+    display: none;
+  }
 }
 
 input {
   height: 50px;
-  width: 300px;
-  margin-left: 30px;
+  width: 80%;
+  /* margin-left: 30px; */
 }
 
 #submit {
