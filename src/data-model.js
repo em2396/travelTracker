@@ -9,6 +9,8 @@ const userNums = ['1', '2,', '3', '4','5','6','7','8','9','10','11','12','13','1
 let currentId 
 
 
+import { allTravelersData } from "./scripts";
+
 
 //Functions Here
 export const findCurrentId = () => {
@@ -25,5 +27,19 @@ export const userLogsIn = () => {
     if (username.value === `traveler${currentId}` && password.value === 'travel') {
         login.classList.add('hidden');
         travelInfo.classList.remove('hidden');
+        console.log(allTravelersData, 'alltravelers')
+        findCurrentTraveler(allTravelersData);
     }
+};
+
+//create a function with alltraveler data as an input
+    //find the user id that matches the currentId
+    //console.log current user obj
+
+const findCurrentTraveler = allTravelers => {
+    const currentTraveler = allTravelers.find(user => {
+        return user.id === currentId;
+    })
+    console.log(currentTraveler, 'current traveler')
+    return currentTraveler; 
 }
