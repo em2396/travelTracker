@@ -10,34 +10,36 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <section class="login" id="login">
-    <label for="usernameInput" class="labels">Username:
-    <input type="text" placeholder="John Smith" required/>
-    </label>
-    <label for="password" class="labels">Password:
-    <input type="password" required/>
-    </label>
-    <button id="submit">Submit</button>
-  </section>
-  <section class="travel-info hidden">
-    <aside class="content" id="dashboard">
-      <h1>Dashboard</h1>
-      <h2>Username</h2>
-      <button>Add New Trip</button>
-    </aside>
-    <main class="content" id="main">
-      <header>
-        <h1 id="travelAgency">The Travel Agency</h1>
-        <h2 id="yourVacation">Your vacation starts here</h2>
-      </header>
-      <section class="button-tab">
-        <button class="tab-bar" id="past">Past</button>
-        <button class="tab-bar" id="upcoming">Upcoming</button>
-        <button class="tab-bar" id="Pending">Pending</button>
-        <button class="tab-bar" id="spending">Spending</button>
-      </section>
-    </main>
-  </section>
+  <div class="layout">
+    <section class="login" id="login">
+      <label for="username" class="labels">Username:
+      <input type="text" placeholder="John Smith" id="username" required/>
+      </label>
+      <label for="password" class="labels">Password:
+      <input type="password" id="password" required/>
+      </label>
+      <button id="submit">Submit</button>
+    </section>
+    <section class="travel-info hidden">
+      <aside class="content" id="dashboard">
+        <h1>Dashboard</h1>
+        <h2>Username</h2>
+        <button>Add New Trip</button>
+      </aside>
+      <main class="content" id="main">
+        <header>
+          <h1 id="travelAgency">The Travel Agency</h1>
+          <h2 id="yourVacation">Your vacation starts here</h2>
+        </header>
+        <section class="button-tab">
+          <button class="tab-bar" id="past">Past</button>
+          <button class="tab-bar" id="upcoming">Upcoming</button>
+          <button class="tab-bar" id="Pending">Pending</button>
+          <button class="tab-bar" id="spending">Spending</button>
+        </section>
+      </main>
+    </section>
+  </div>
   <script src="bundle.js"></script>
 </body>
 </html>
