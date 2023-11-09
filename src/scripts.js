@@ -13,7 +13,7 @@ export let currentTraveler;
 //Event Listeners Here:
 window.addEventListener('load', function() {
     Promise.all(fetchTravelerInfo).then(values => {
-        console.log(values);
+        console.log(values, 'inside promise');
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
         // console.log(allTrips)
