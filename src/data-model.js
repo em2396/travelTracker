@@ -1,5 +1,5 @@
 //Imports Here: 
-import { allTravelersData } from "./scripts";
+import { allTravelersData, allTrips } from "./scripts";
 import { displayCurrentTraveler } from "./domUppdates";
 
 //QuerySelectors Here: 
@@ -23,7 +23,7 @@ export const findCurrentId = () => {
         userLogsIn();
         return currentId;
     })
-}
+};
 
 export const userLogsIn = () => {
     if (username.value === `traveler${currentId}` && password.value === 'travel') {
@@ -37,6 +37,16 @@ const findCurrentTraveler = allTravelers => {
     currentTraveler = allTravelers.find(user => {
         return user.id == currentId;
     })
-    displayCurrentTraveler(currentTraveler);
+    travelerTripData(currentTraveler, allTrips);
     return currentTraveler;
+};
+
+//trips [... {id: 1, destinationID: 49, duration: 8, id: 1, suggestedActivities: [], statues: 'approved', travelers: 1, userID: 44 }...]
+export const travelerTripData = (currentTraveler, trips) => {
+    const currentTravelerTrips = trips.filter(element => {
+        return element.userID === currentTraveler.id;
+    })
+    // console.log(currentTravelerTrips, 'current Traveler Trips')
+    displayCurrentTraveler(currentTraveler, currentTravelerTrips)
+    return currentTravelerTrips;
 }
