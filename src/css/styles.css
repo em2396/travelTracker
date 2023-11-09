@@ -2,6 +2,7 @@ body {
   background-image: url('/Users/emaleepoellot/mod2/finalSolo/travelTracker/sean-oulashin-KMn4VEeEPR8-unsplash.jpg');
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Handlee', sans-serif;
 }
 
 .layout {
@@ -16,9 +17,6 @@ body {
   display: flex;
   flex-direction: row;
   width: 75%;
-  /* margin-left: 200px;
-  margin-top: 120px;
-  margin-left: 280px; */
   @media (max-width: 750px) {
     flex-direction: column;
   }
@@ -56,11 +54,9 @@ body {
   background-color: white;
   @media (max-width: 750px) {
     width: 100%;
-    /* height: initial; */
   }
-  /* margin-left: none; */
-  /* margin-top: 100px; */
 }
+
 
 #login {
   display: flex; 
@@ -72,12 +68,8 @@ body {
   width: 50%;
   height: 50vh;
   padding: 40px;
-  /* margin-top: 200px;
-  margin-left: 550px; */
   text-align: center;
-  font-size: 45px;
-  font-family: Arial, Helvetica, sans-serif;
-  /* box-shadow:; */
+  font-family: 'Handlee', sans-serif;
   &.hidden {
     display: none;
   }
@@ -86,7 +78,26 @@ body {
 input {
   height: 50px;
   width: 80%;
-  /* margin-left: 30px; */
+  font-family: 'Handlee', sans-serif;
+  font-size: 20px;
+}
+
+#passwordContainer {
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  text-wrap: nowrap;
+
+}
+
+#showPassword {
+  margin: 0px;
+  width: 20px;
+}
+
+#showPassText {
+  font-size: 30px;
+  margin-left: 10px;
 }
 
 #submit {
@@ -98,10 +109,13 @@ input {
   border-color: rgb(0, 118, 37);
   border-radius: 30px;
   font-size: 25px;
+  font-family: 'Handlee', sans-serif;
+  letter-spacing: 1.5px;
 }
 
 .labels {
   margin: 10px;
+  font-size: 45px;
 }
 
 .hidden {
