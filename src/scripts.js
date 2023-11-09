@@ -1,22 +1,22 @@
 //Imports Here:
-import { allDestinations, allTravelers, allTrips, fetchTravelerInfo } from './apiCalls';
+import { allDestinations, allTravelers, allTrips, fetchTravelerInfo, urls } from './apiCalls';
 import { userLogsIn, findCurrentId } from './data-model';
 import './css/styles.css';
+import { displayCurrentTraveler } from './domUppdates';
 
 //QuerySelectors Here:
 const submitButton = document.querySelector('#submit');
+export let allTravelersData; 
+export let currentTraveler;
 
-//Dom Update Variables Here:
-const allTravelersData = fetchTravelerInfo(allTravelers);
-const allTripsData = fetchTravelerInfo(allTrips);
-const allDestinationsData = fetchTravelerInfo(allDestinations);
+//Event Listeners Here:
+window.addEventListener('load', function() {
+    Promise.all(fetchTravelerInfo).then(values => {
+        allTravelersData = values[0].travelers;
+    })
+})
 
-console.log(allTripsData, 'all trips data')
-console.log(allTravelersData, 'all travelers data');
-console.log(allDestinationsData, 'destinations data');
-
-//Even Listeners Here:
-submitButton.addEventListener('click', function() {
-    // event.preventDefault()
+submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
     findCurrentId();
 })
