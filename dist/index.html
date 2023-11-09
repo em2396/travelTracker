@@ -7,17 +7,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Handlee&display=swap" rel="stylesheet">  
   <title>Webpack Starter Kit</title>
 </head>
 <body>
   <div class="layout">
     <section class="login" id="login">
       <label for="username" class="labels">Username:
-      <input type="text" placeholder="John Smith" id="username" required/>
+      <input type="text" placeholder="traveler0" id="username" required/>
       </label>
       <label for="password" class="labels">Password:
       <input type="password" id="password" required/>
       </label>
+      <container id="passwordContainer">
+        <input type="checkbox" id="showPassword">
+        <label for="showPassword" id="showPassText">Show Password</label>
+      </container>
       <button id="submit">Submit</button>
     </section>
     <section class="travel-info hidden">
