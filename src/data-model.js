@@ -1,6 +1,6 @@
 //Imports Here: 
-import { allTravelersData, allTrips } from "./scripts";
-import { displayCurrentTraveler } from "./domUppdates";
+import { allTravelersData, allTrips, allDestinations } from "./scripts";
+import { displayCurrentTraveler, displayTotalCost } from "./domUppdates";
 
 //QuerySelectors Here: 
 const login = document.querySelector('.login');
@@ -8,12 +8,16 @@ const loginWindow = document.querySelector('.login-window');
 const travelInfo = document.querySelector('.travel-info');
 
 //Variables Here:
-let currentId 
-let currentTraveler
+export let currentTraveler;
+export let upcoming = [];
+export let past = [];
+export let pending = [];
+export let tripsThisYear;
+export let destinationsThisYear;
+let currentId;
+let currentTravelerTrips;
 
-
-
-//Functions Here
+//Functions Here:
 export const findCurrentId = () => {
     let splitValues = username.value.split('traveler')
     currentId = splitValues[1]
@@ -37,12 +41,73 @@ const findCurrentTraveler = allTravelers => {
     return currentTraveler;
 };
 
-//trips [... {id: 1, destinationID: 49, duration: 8, id: 1, suggestedActivities: [], statues: 'approved', travelers: 1, userID: 44 }...]
 export const travelerTripData = (currentTraveler, trips) => {
-    const currentTravelerTrips = trips.filter(element => {
+    currentTravelerTrips = trips.filter(element => {
         return element.userID === currentTraveler.id;
     })
-    // console.log(currentTravelerTrips, 'current Traveler Trips')
-    displayCurrentTraveler(currentTraveler, currentTravelerTrips)
+    filterTripByDate(currentTravelerTrips);
     return currentTravelerTrips;
 }
+
+export const filterTripByDate = travelerTrips => {
+    const todaysDate = new Date();
+    travelerTrips.forEach(element => {
+        const tripDate = new Date(element.date);
+        if (todaysDate < tripDate && element.status === 'approved') {
+            upcoming.push(element);
+        } else if (todaysDate > tripDate && element.status === 'approved'){ 
+            past.push(element); 
+        } else {
+            pending.push(element)
+        }
+    })
+    findTripsThisYear(currentTravelerTrips);
+    displayCurrentTraveler(past, pending, upcoming);
+};
+
+export const findTripsThisYear = travelerTrips => {
+        // console.log(travelerTrips, '17s trips')
+    tripsThisYear = travelerTrips.reduce((acc, current) => {
+        const tripYear = current.date.slice(0, 4);
+        if (tripYear == 2020) {
+            acc.push(current);
+        }
+        return acc;
+    },[]);
+    // console.log(tripsThisYear, 'inside find trips')
+    findDestinationsThisYear(tripsThisYear, allDestinations);
+};
+    
+export const findDestinationsThisYear = (tripsThisYear, destinations) => {
+    destinationsThisYear = tripsThisYear.reduce((acc, trip) => {
+        const destination = destinations.find(dest => dest.id === trip.destinationID);
+        if (destination) {
+            acc.push(destination);
+        }
+        return acc;
+    }, [])
+    calculateCost(destinationsThisYear);
+};
+
+export const calculateCost = destinations => {
+    let total
+    console.log(tripsThisYear)
+    console.log(destinations, 'dest');
+    tripsThisYear.reduce((acc, current) => {
+        destinations.find(element => {
+           const calculate = element.id === current.destinationID
+            if (calculate) {
+                acc += ((current.travelers * element.estimatedFlightCostPerPerson) + (element.estimatedLodgingCostPerDay * current.duration))
+            } 
+        })
+        total = acc;
+        // console.log(acc, 'acc')
+        return acc;
+    }, 1)
+    total += (total * .1);
+    console.log(total);
+    displayTotalCost(total);
+    return total
+};
+
+    //allDestinations looks like :  [... {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: link }... ]
