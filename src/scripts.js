@@ -1,5 +1,5 @@
 //Imports Here:
-import { allDestinations, fetchTravelerInfo, urls } from './apiCalls';
+import { fetchTravelerInfo } from './apiCalls';
 import { userLogsIn, findCurrentId } from './data-model';
 import './css/styles.css';
 import { displayCurrentTraveler } from './domUppdates';
@@ -9,6 +9,7 @@ const submitButton = document.querySelector('#submit');
 export let allTravelersData; 
 export let allTrips;
 export let currentTraveler;
+export let allDestinations;
 
 //Event Listeners Here:
 window.addEventListener('load', function() {
@@ -16,7 +17,7 @@ window.addEventListener('load', function() {
         console.log(values, 'inside promise');
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
-        // console.log(allTrips)
+        allDestinations = values[2].destinations;
     })
 })
 
