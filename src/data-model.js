@@ -1,6 +1,6 @@
 //Imports Here: 
 import { allTravelersData, allTrips, allDestinations } from "./scripts";
-import { displayCurrentTraveler, displayTotalCost } from "./domUppdates";
+import { displayPast, displayTotalCost } from "./domUppdates";
 
 //QuerySelectors Here: 
 const login = document.querySelector('.login');
@@ -62,11 +62,9 @@ export const filterTripByDate = travelerTrips => {
         }
     })
     findTripsThisYear(currentTravelerTrips);
-    displayCurrentTraveler(past, pending, upcoming);
 };
 
 export const findTripsThisYear = travelerTrips => {
-        // console.log(travelerTrips, '17s trips')
     tripsThisYear = travelerTrips.reduce((acc, current) => {
         const tripYear = current.date.slice(0, 4);
         if (tripYear == 2020) {
@@ -74,7 +72,6 @@ export const findTripsThisYear = travelerTrips => {
         }
         return acc;
     },[]);
-    // console.log(tripsThisYear, 'inside find trips')
     findDestinationsThisYear(tripsThisYear, allDestinations);
 };
     
@@ -101,11 +98,11 @@ export const calculateCost = destinations => {
             } 
         })
         total = acc;
-        // console.log(acc, 'acc')
         return acc;
     }, 1)
     total += (total * .1);
     console.log(total);
+    displayPast(past); //change to upcoming when use POST
     displayTotalCost(total);
     return total
 };
