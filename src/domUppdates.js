@@ -7,36 +7,43 @@ export const upcomingTravel = document.querySelector('#upcomingTravel');
 const totalSpending = document.querySelector('#totalSpending');
 
 
-
+export const displayFirst = (past, upcoming, pending) => {
+    pendingTravel.classList.add('hidden');
+    upcomingTravel.classList.add('hidden');
+    pastTravel.classList.remove('hidden');
+    past.forEach(element => {
+        pastTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}. `;
+    });
+    upcoming.forEach(element => {
+        upcomingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
+    });
+    pending.forEach(element => {
+        pendingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
+    });
+}
 
 
 export const displayPast = (past) => {
     console.log(past, 'past')
     userDash.innerText = currentTraveler.name;
-    upcomingTravel.innerHTML = '';
-    pendingTravel.innterHTML = '';
-    past.forEach(element => {
-        pastTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}. `;
-    });
+    pendingTravel.classList.add('hidden');
+    upcomingTravel.classList.add('hidden');
+    pastTravel.classList.remove('hidden');
 };
 
 export const displayUpcoming = (upcoming) => {
     userDash.innerText = currentTraveler.name;
-    pastTravel.innerHTML = '';
-    pendingTravel.innterHTML = '';
-    upcoming.forEach(element => {
-        upcomingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
-    });
+    pendingTravel.classList.add('hidden');
+    upcomingTravel.classList.remove('hidden');
+    pastTravel.classList.add('hidden');
 };
 
 export const displayPending = pending => {
     console.log(pending, 'pending')
     userDash.innerText = currentTraveler.name;
-    upcomingTravel.innerHTML = '';
-    pastTravel.innterHTML = '';
-    pending.forEach(element => {
-        pendingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
-    });
+    pendingTravel.classList.remove('hidden');
+    upcomingTravel.classList.add('hidden');
+    pastTravel.classList.add('hidden');
 };
 
 export const displayTotalCost = total => {
