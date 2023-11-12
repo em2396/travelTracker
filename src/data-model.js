@@ -1,6 +1,6 @@
 //Imports Here: 
 import { allTravelersData, allTrips, allDestinations } from "./scripts";
-import { displayPast, displayTotalCost } from "./domUppdates";
+import { displayFirst, displayTotalCost } from "./domUppdates";
 
 //QuerySelectors Here: 
 const login = document.querySelector('.login');
@@ -102,7 +102,7 @@ export const calculateCost = destinations => {
     }, 1)
     total += (total * .1);
     console.log(total);
-    displayPast(past); //change to upcoming when use POST
+    displayFirst(past, upcoming, pending); //change to upcoming when use POST
     displayTotalCost(total);
     return total
 };
