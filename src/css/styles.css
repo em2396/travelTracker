@@ -57,7 +57,7 @@ body {
   }
 }
 
-
+/* Login page */
 #login {
   display: flex; 
   flex-direction: column;
@@ -120,4 +120,38 @@ input {
 
 .hidden {
   display: none; 
+}
+
+.button-tab {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 25px;
+}
+
+.button-tab input[type="radio"] {
+  display: none;
+}
+
+.button-tab label {
+  padding: 25px;
+  background: white; 
+  font-weight: bold; 
+}
+
+.button-tab .tabs {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  order: 1;
+  display: none;
+}
+
+.button-tab input[type= "radio"]:checked + label + .tab {
+  display: block;
+}
+
+.button-tab input[type="radio"]:checked + label {
+  background: rgb(146, 141, 141);
 }

@@ -38,16 +38,24 @@
           <h1 id="travelAgency">The Travel Agency</h1>
           <h2 id="yourVacation">Your vacation starts here</h2>
         </header>
-        <section class="button-tab">
-          <button class="tab-bar" id="past">Past</button>
-          <button class="tab-bar" id="upcoming">Upcoming</button>
-          <button class="tab-bar" id="Pending">Pending</button>
-          <button class="tab-bar" id="spending">Spending</button>
-        </section>
-        <p id="pastTravel"></p>
-        <p id="upcomingTravel"></p>
-        <p id="pendingTravel"></p>
         <p id="totalSpending"></p>
+        <section class="button-tab">
+          <input type="radio" id="upcomingButton" name="tabs">
+          <label for="upcomingButton">Upcoming</label>
+          <div id="upcomingTravel">
+            <p></p>
+          </div>
+          <input type="radio" id="pendingButton" name="tabs">
+          <label for="pendingButton">Pending</label>
+          <div id="pendingTravel">
+            <p></p>
+          </div>
+          <input type="radio" id="pastButton" name="tabs" checked="checked">
+          <label for="pastButton">Past</label>
+          <div id="pastTravel">
+            <p></p>
+          </div>
+        </section>
       </main>
     </section>
   </div>

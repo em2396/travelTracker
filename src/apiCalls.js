@@ -1,5 +1,3 @@
-
-// export const allTravelers = 'http://localhost:3001/api/v1/travelers'; //GET
 // export const singleTraveler = 'http://localhost:3001/api/v1/travelers'; //interpolate a /${id} GET
 // export const allTrips = 'http://localhost:3001/api/v1/trips'; //GET
 // export const allDestinations = 'http://localhost:3001/api/v1/destinations'; //GET
@@ -7,7 +5,7 @@
 // export const newDestination = 'http://localhost:3001/api/v1/destinations';
 // export const modifySingleTrip = 'http://localhost:3001/api/v1/updateTrip';
 
-export const urls = ['http://localhost:3001/api/v1/travelers','http://localhost:3001/api/v1/trips' ]
+export const urls = ['http://localhost:3001/api/v1/travelers','http://localhost:3001/api/v1/trips', 'http://localhost:3001/api/v1/destinations']
 
 export const fetchTravelerInfo = urls.map(url => {
    return fetch(url)
