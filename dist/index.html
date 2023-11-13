@@ -30,10 +30,10 @@
     </section>
     <section class="travel-info hidden">
       <aside class="content" id="dashboard">
-        <h1>Dashboard</h1>
-        <h2 id="userDash">Username</h2>
+        <h1 tabindex="0">Dashboard</h1>
+        <h2 id="userDash" tabindex="0">Username</h2>
         <section class="new-trip">
-          <h1>Add New Trip: </h1>
+          <h1 tabindex="0">Add New Trip: </h1>
           <label for="dateInput" class="new-trip-labels">Enter Date:
             <input class="new-trip-input" type="text" placeholder="YYYY/MM/DD" id="dateInput" required/>
           </label>
@@ -43,32 +43,29 @@
           <label for="numOfTravelers" class="new-trip-labels"># of Travelers:
             <input class="new-trip-input" type="text" id="numOfTravelers" required/>
           </label>
-          <label for="chooseDestination">Select a chooseDestination</label>
+          <label for="chooseDestination">Select a Destination</label>
           <input list="destinationList" id="chooseDestination" name="chooseDestination">
           <datalist id="destinationList"></datalist>
           <button id="estimatedCostButton">See Estimated Cost</button>
           <button id="submitTrip">Submit</button>
-          <p id="estimatedCost"></p>
+          <p id="estimatedCost" tabindex="0"></p>
         </section>
       </aside>
       <main class="content" id="main">
         <header>
-          <h1 id="travelAgency">The Travel Agency</h1>
-          <h2 id="yourVacation">Your vacation starts here</h2>
+          <h1 id="travelAgency" tabindex="0">The Travel Agency</h1>
+          <h2 id="yourVacation" tabindex="0">Your vacation starts here</h2>
         </header>
-        <p id="totalSpending"></p>
+        <p id="totalSpending" tabindex="0"></p>
         <section class="button-tab">
-          <input type="radio" id="upcomingButton" name="tabs">
-          <label for="upcomingButton">Upcoming</label>
-          <input type="radio" id="pendingButton" name="tabs">
-          <label for="pendingButton">Pending</label>
-          <input type="radio" id="pastButton" name="tabs" checked="checked">
-          <label for="pastButton">Past</label>
+          <button id="upcomingButton">Upcoming</button>
+          <button id="pendingButton">Pending</button>
+          <button id="pastButton">Past</button>
         </section>
         <section>
-          <p id="pastTravel"></p>
-          <p id="pendingTravel"></p>
-          <p id="upcomingTravel"></p>
+          <p id="pastTravel" tabindex="0"></p>
+          <p id="pendingTravel" tabindex="0"></p>
+          <p id="upcomingTravel" tabindex="0"></p>
         </section>
       </main>
     </section>
