@@ -53,9 +53,7 @@ export const displayTotalCost = total => {
 };
 
 export const dropdownDestinations = destinationAll => {
-    //destinationAll.destination
     destinationAll.forEach(element => {
-        console.log(element.destination)
-       destinationList.innerHTML += `<option value=${element.destination}>`
-    })
+       destinationList.innerHTML += `<option>${element.destination}</option>`
+    });
 }
