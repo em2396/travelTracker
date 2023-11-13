@@ -41,25 +41,64 @@ window.addEventListener('DOMContentLoaded', function() {
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
     findCurrentId();
-})
+});
+
+submitButton.addEventListener('keydown', function(event) {
+    event.preventDefault();
+    if (event.code === 'Enter' || event.code === 'Space') {
+        findCurrentId();
+    }
+});
 
 upcomingButton.addEventListener('click', function() {
-    displayUpcoming(upcoming)
+    displayUpcoming(upcoming);
+});
+
+upcomingButton.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === 'Space') {
+        console.log('keyed>>>>>>>>.')
+        displayUpcoming(upcoming);
+    };
 });
 
 pendingButton.addEventListener('click', function() {
-    displayPending(pending)
+    displayPending(pending);
+});
+
+pendingButton.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === 'Space') {
+        displayPending(pending);
+    }
 });
 
 pastButton.addEventListener('click', function() {
-    displayPast(past)
+    displayPast(past);
 });
+
+pastButton.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === 'Space') {
+     displayPast(past)
+    };
+});
+
 
 submitTrip.addEventListener('click', function() {
     newTrip('submit');
 });
 
+submitTrip.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === 'Space') {
+        newTrip('submit');
+    };
+});
+
 estimatedCostButton.addEventListener('click', function() {
     newTrip('estimate');
+});
+
+estimatedCostButton.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === 'Space') {
+        newTrip('estimate');
+    };
 });
 
