@@ -5,9 +5,11 @@ export const pastTravel = document.querySelector('#pastTravel');
 export const pendingTravel = document.querySelector('#pendingTravel');
 export const upcomingTravel = document.querySelector('#upcomingTravel');
 const totalSpending = document.querySelector('#totalSpending');
+const destinationList = document.querySelector('#destinationList');
 
 
 export const displayFirst = (past, upcoming, pending) => {
+    userDash.innerText = currentTraveler.name;
     pendingTravel.classList.add('hidden');
     upcomingTravel.classList.add('hidden');
     pastTravel.classList.remove('hidden');
@@ -48,4 +50,10 @@ export const displayPending = pending => {
 
 export const displayTotalCost = total => {
     totalSpending.innerText = `The total cost for this year is ${total}`;
+};
+
+export const dropdownDestinations = destinationAll => {
+    destinationAll.forEach(element => {
+       destinationList.innerHTML += `<option>${element.destination}</option>`
+    });
 }

@@ -1,6 +1,6 @@
 //Imports Here: 
-import { allTravelersData, allTrips, allDestinations } from "./scripts";
-import { displayFirst, displayTotalCost } from "./domUppdates";
+import { allTravelersData, allTrips, allDestinations, formattedDate } from "./scripts";
+import { displayFirst, displayTotalCost, dropdownDestinations } from "./domUppdates";
 
 //QuerySelectors Here: 
 const login = document.querySelector('.login');
@@ -89,7 +89,7 @@ export const findDestinationsThisYear = (tripsThisYear, destinations) => {
 export const calculateCost = destinations => {
     let total
     console.log(tripsThisYear)
-    console.log(destinations, 'dest');
+    // console.log(destinations, 'dest');
     tripsThisYear.reduce((acc, current) => {
         destinations.find(element => {
            const calculate = element.id === current.destinationID
@@ -104,7 +104,9 @@ export const calculateCost = destinations => {
     console.log(total);
     displayFirst(past, upcoming, pending); //change to upcoming when use POST
     displayTotalCost(total);
+    dropdownDestinations(allDestinations);
     return total
 };
+
 
     //allDestinations looks like :  [... {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: link }... ]
