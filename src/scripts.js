@@ -1,8 +1,8 @@
 //Imports Here:
-import { fetchTravelerInfo } from './apiCalls';
+import { fetchTravelerInfo, submitNewTrip } from './apiCalls';
 import { findCurrentId, upcoming, past, pending } from './data-model';
 import './css/styles.css';
-import { displayPast, displayUpcoming, displayPending, displayNewTripWindow } from './domUppdates';
+import { displayPast, displayUpcoming, displayPending } from './domUppdates';
 //clean up ^^^
 
 //QuerySelectors Here:
@@ -19,6 +19,7 @@ export let allTravelersData;
 export let allTrips;
 export let currentTraveler;
 export let allDestinations;
+export let formattedDate;
 
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function() {
@@ -30,8 +31,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const picker = datepicker(dateInput, {
             onSelect: (instance, date) => {
-              const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
+              formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
               dateInput.value = formattedDate
+              return formattedDate;
             },
             startDate: new Date (2023, 12, 12),
           });
@@ -56,7 +58,7 @@ pastButton.addEventListener('click', function() {
 });
 
 submitTrip.addEventListener('click', function() {
-
+    submitNewTrip()
 });
 
 estimatedCostButton.addEventListener('click', function() {
