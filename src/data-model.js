@@ -1,5 +1,5 @@
 //Imports Here: 
-import { allTravelersData, allTrips, allDestinations } from "./scripts";
+import { allTravelersData, allTrips, allDestinations, formattedDate } from "./scripts";
 import { displayFirst, displayTotalCost, dropdownDestinations } from "./domUppdates";
 
 //QuerySelectors Here: 
@@ -34,7 +34,6 @@ export const userLogsIn = () => {
 };
 
 const findCurrentTraveler = allTravelers => {
-    // console.log(allDestinations)
     currentTraveler = allTravelers.find(user => {
         return user.id == currentId;
     })
@@ -90,7 +89,7 @@ export const findDestinationsThisYear = (tripsThisYear, destinations) => {
 export const calculateCost = destinations => {
     let total
     console.log(tripsThisYear)
-    console.log(destinations, 'dest');
+    // console.log(destinations, 'dest');
     tripsThisYear.reduce((acc, current) => {
         destinations.find(element => {
            const calculate = element.id === current.destinationID
@@ -109,8 +108,5 @@ export const calculateCost = destinations => {
     return total
 };
 
-export const estimateNewTripCost = () => {
-    
-}
 
     //allDestinations looks like :  [... {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: link }... ]
