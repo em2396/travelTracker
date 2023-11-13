@@ -112,17 +112,3 @@ export const calculateCost = destinations => {
 
 
     //allDestinations looks like :  [... {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: link }... ]
-//export const filterTripByDate = travelerTrips => {
-//     const todaysDate = new Date();
-//     travelerTrips.forEach(element => {
-//         const tripDate = new Date(element.date);
-//         if (todaysDate < tripDate && element.status === 'approved') {
-//             upcoming.push(element);
-//         } else if (todaysDate > tripDate && element.status === 'approved') { 
-//             past.push(element); 
-//         } else {
-//             pending.push(element)
-//         }
-//     })
-//     findTripsThisYear(currentTravelerTrips);
-// };
