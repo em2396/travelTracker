@@ -24,7 +24,7 @@ export let formattedDate;
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function() {
     Promise.all(fetchTravelerInfo).then(values => {
-        console.log(values, 'inside promise');
+        // console.log(values, 'inside promise');
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
         allDestinations = values[2].destinations;
