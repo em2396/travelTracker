@@ -13,6 +13,9 @@ export const displayFirst = (past, upcoming, pending) => {
     pendingTravel.classList.add('hidden');
     upcomingTravel.classList.add('hidden');
     pastTravel.classList.remove('hidden');
+    pendingTravel.innerHTML = '';
+    pastTravel.innerHTML = '';
+    upcomingTravel.innerHTML = '';
     past.forEach(element => {
         pastTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}. `;
     });
