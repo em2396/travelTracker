@@ -5,8 +5,9 @@
 // export const newDestination = 'http://localhost:3001/api/v1/destinations';
 // export const modifySingleTrip = 'http://localhost:3001/api/v1/updateTrip';
 
-import { currentTraveler } from "./data-model"
-import { formattedDate, allDestinations, allTrips} from "./scripts"
+import { currentTraveler, past, upcoming, pending } from "./data-model"
+import { displayFirst } from "./domUppdates";
+import { allDestinations, allTrips} from "./scripts"
 
 export const urls = ['http://localhost:3001/api/v1/travelers','http://localhost:3001/api/v1/trips', 'http://localhost:3001/api/v1/destinations']
 
@@ -35,19 +36,20 @@ export const sendNewTrip = tripInfo => {
         if (!response.ok) {
             throw new Error (`${response.status}: Failed to fetch data`)
         }
-        // console.log(response);
        return response.json()
     })
     .then (json => {
-        // console.log(json, 'json')
+        console.log(json, 'json')
         allTrips.push(json);
-        // console.log(allTrips);
-
+        console.log(allTrips);
+        pending.push(tripInfo);
+        console.log(pending, 'new pending')
+        displayFirst(past, upcoming, pending);
     })
 }
 
-//duration and travelers neeed to benumbers
 export const submitNewTrip = () => {
+    console.log(allTrips, 'all trips');
     const destInput = allDestinations.find(element => {
        return element.destination === chooseDestination.value
     });
@@ -57,13 +59,14 @@ export const submitNewTrip = () => {
     const numOfPeople = parseInt(numOfTravelers.value);
     if (dateRegex.test(dateInput.value) && durationInput.value <= 30 && typeof numOfPeople === 'number') {
         const trip = {
-            id: allTrips.length + 1,
-            userID: currentTraveler.id,
-            destinationID: destID,
-            travelers: numOfPeople,
             date: dateInput.value,
+            destinationID: destID,
             duration: duration,
-            status: 'pending'
+            id: allTrips.length + 1,
+            status: 'pending',
+            suggestedActivities: [],
+            travelers: numOfPeople,
+            userID: currentTraveler.id
         }
         console.log(trip, 'trip')
         sendNewTrip(trip);

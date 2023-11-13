@@ -1,5 +1,5 @@
 //Imports Here: 
-import { allTravelersData, allTrips, allDestinations, formattedDate } from "./scripts";
+import { allTravelersData, allTrips, allDestinations } from "./scripts";
 import { displayFirst, displayTotalCost, dropdownDestinations } from "./domUppdates";
 
 //QuerySelectors Here: 
@@ -32,6 +32,7 @@ export const userLogsIn = () => {
        return  findCurrentTraveler(allTravelersData);
     }
 };
+//^^^^^Refactor to move DOM updates
 
 const findCurrentTraveler = allTravelers => {
     currentTraveler = allTravelers.find(user => {
@@ -45,6 +46,7 @@ export const travelerTripData = (currentTraveler, trips) => {
     currentTravelerTrips = trips.filter(element => {
         return element.userID === currentTraveler.id;
     })
+    console.log(currentTravelerTrips, 'updated')
     filterTripByDate(currentTravelerTrips);
     return currentTravelerTrips;
 }
@@ -55,7 +57,7 @@ export const filterTripByDate = travelerTrips => {
         const tripDate = new Date(element.date);
         if (todaysDate < tripDate && element.status === 'approved') {
             upcoming.push(element);
-        } else if (todaysDate > tripDate && element.status === 'approved'){ 
+        } else if (todaysDate > tripDate && element.status === 'approved') { 
             past.push(element); 
         } else {
             pending.push(element)
@@ -102,7 +104,7 @@ export const calculateCost = destinations => {
     }, 1)
     total += (total * .1);
     console.log(total);
-    displayFirst(past, upcoming, pending); //change to upcoming when use POST
+    displayFirst(past, upcoming, pending); 
     displayTotalCost(total);
     dropdownDestinations(allDestinations);
     return total
