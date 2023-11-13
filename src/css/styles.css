@@ -26,12 +26,14 @@ body {
   font-family: 'Dancing Script', cursive;
   font-size: 70px;
   margin: 0;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #yourVacation {
   font-family: 'Dancing Script', cursive;
   font-size: 35px;
+  margin: 0;
+  margin-top: 10px;
 }
 
 
@@ -93,6 +95,7 @@ body {
 #showPassword {
   margin: 0px;
   width: 20px;
+  cursor: pointer;
 }
 
 #showPassText {
@@ -129,32 +132,21 @@ body {
   max-width: 300px;
   margin: 20px auto;
   padding: 10px;
-}
-
-.button-tab input[type="radio"] {
-  display: none;
-}
-
-.button-tab label {
   padding: 10px;
   background: white; 
   font-weight: bold; 
 }
 
-.button-tab .tabs {
-  width: 100%;
-  padding: 10px;
-  background: white;
-  order: 1;
-  display: none;
-}
-
-.button-tab input[type= "radio"]:checked + label + .tab {
-  display: block;
-}
-
-.button-tab input[type="radio"]:checked + label {
-  background: rgb(146, 141, 141);
+#upcomingButton,
+#pastButton,
+#pendingButton {
+  background-color: white;
+  margin: 5px;
+  font-family: 'Handlee', sans-serif;
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .new-trip {
@@ -169,6 +161,17 @@ body {
   height: 30px;
   width: 50%;
   margin-top: 5px;
+  cursor: pointer;
+}
+
+#estimatedCostButton,
+#submitTrip {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Handlee',sans-serif;
+  font-weight: bold;
+  height: 30px;
+  cursor: pointer;
 }
 
 
