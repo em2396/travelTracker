@@ -6,6 +6,7 @@ export const pendingTravel = document.querySelector('#pendingTravel');
 export const upcomingTravel = document.querySelector('#upcomingTravel');
 const totalSpending = document.querySelector('#totalSpending');
 const destinationList = document.querySelector('#destinationList');
+const estimatedCost = document.querySelector('#estimatedCost');
 
 
 export const displayFirst = (past, upcoming, pending) => {
@@ -52,11 +53,15 @@ export const displayPending = pending => {
 };
 
 export const displayTotalCost = total => {
-    totalSpending.innerText = `The total cost for this year is ${total}`;
+    totalSpending.innerText = `The total cost for this year is $${total}`;
 };
 
 export const dropdownDestinations = destinationAll => {
     destinationAll.forEach(element => {
        destinationList.innerHTML += `<option>${element.destination}</option>`
     });
-}
+};
+
+export const displayEstimatedCost = total => {
+    estimatedCost.innerHTML = `The estimated cost for your trip is: $${total}. Press submit to send to an agent.`
+};
