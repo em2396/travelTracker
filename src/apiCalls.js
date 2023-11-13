@@ -46,30 +46,5 @@ export const sendNewTrip = tripInfo => {
         console.log(pending, 'new pending')
         displayFirst(past, upcoming, pending);
     })
-}
+};
 
-export const submitNewTrip = () => {
-    console.log(allTrips, 'all trips');
-    const destInput = allDestinations.find(element => {
-       return element.destination === chooseDestination.value
-    });
-    const destID = destInput.id;
-    const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
-    const duration = parseInt(durationInput.value);
-    const numOfPeople = parseInt(numOfTravelers.value);
-    if (dateRegex.test(dateInput.value) && durationInput.value <= 30 && typeof numOfPeople === 'number') {
-        const trip = {
-            date: dateInput.value,
-            destinationID: destID,
-            duration: duration,
-            id: allTrips.length + 1,
-            status: 'pending',
-            suggestedActivities: [],
-            travelers: numOfPeople,
-            userID: currentTraveler.id
-        }
-        console.log(trip, 'trip')
-        sendNewTrip(trip);
-        return trip;
-    }
-}

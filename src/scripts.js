@@ -1,9 +1,8 @@
 //Imports Here:
 import { fetchTravelerInfo, submitNewTrip } from './apiCalls';
-import { findCurrentId, upcoming, past, pending } from './data-model';
+import { findCurrentId, upcoming, past, pending, newTrip } from './data-model';
 import './css/styles.css';
 import { displayPast, displayUpcoming, displayPending } from './domUppdates';
-//clean up ^^^
 
 //QuerySelectors Here:
 const submitButton = document.querySelector('#submit');
@@ -24,7 +23,6 @@ export let formattedDate;
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function() {
     Promise.all(fetchTravelerInfo).then(values => {
-        // console.log(values, 'inside promise');
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
         allDestinations = values[2].destinations;
@@ -58,10 +56,10 @@ pastButton.addEventListener('click', function() {
 });
 
 submitTrip.addEventListener('click', function() {
-    submitNewTrip()
+    newTrip('submit');
 });
 
 estimatedCostButton.addEventListener('click', function() {
-    estimateNewTripCost()
+    newTrip('estimate');
 });
 
