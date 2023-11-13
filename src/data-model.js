@@ -1,6 +1,7 @@
 //Imports Here: 
 import { allTravelersData, allTrips, allDestinations } from "./scripts";
-import { displayFirst, displayTotalCost, dropdownDestinations } from "./domUppdates";
+import { displayFirst, displayTotalCost, dropdownDestinations, displayEstimatedCost } from "./domUppdates";
+import { sendNewTrip } from "./apiCalls";
 
 //QuerySelectors Here: 
 const login = document.querySelector('.login');
@@ -89,9 +90,7 @@ export const findDestinationsThisYear = (tripsThisYear, destinations) => {
 };
 
 export const calculateCost = destinations => {
-    let total
-    console.log(tripsThisYear)
-    // console.log(destinations, 'dest');
+    let total;
     tripsThisYear.reduce((acc, current) => {
         destinations.find(element => {
            const calculate = element.id === current.destinationID
@@ -110,5 +109,57 @@ export const calculateCost = destinations => {
     return total
 };
 
+export const newTrip = (button) => {
+    console.log(allTrips, 'all trips');
+    const destInput = allDestinations.find(element => {
+       return element.destination === chooseDestination.value;
+    });
+    const destID = destInput.id;
+    const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
+    const duration = parseInt(durationInput.value);
+    const numOfPeople = parseInt(numOfTravelers.value);
+    if (dateRegex.test(dateInput.value) && durationInput.value <= 30 && typeof numOfPeople === 'number') {
+        const trip = {
+            date: dateInput.value,
+            destinationID: destID,
+            duration: duration,
+            id: allTrips.length + 1,
+            status: 'pending',
+            suggestedActivities: [],
+            travelers: numOfPeople,
+            userID: currentTraveler.id
+        }
+        if (button === 'submit') {
+            sendNewTrip(trip);
+        } else if (button === 'estimate') {
+            estimateNewTripCost(trip);
+        }
+        return trip;
+    };
+};
 
-    //allDestinations looks like :  [... {id: 1, destination: 'Lima, Peru', estimatedLodgingCostPerDay: 70, estimatedFlightCostPerPerson: 400, image: link }... ]
+export const estimateNewTripCost = tripInfo => {
+    let total;
+    const destCost = allDestinations.find(element => {
+        return element.id === tripInfo.destinationID
+    });
+    total = ((tripInfo.travelers * destCost.estimatedFlightCostPerPerson) + (destCost.estimatedLodgingCostPerDay * tripInfo.duration));
+    total += (total * .1);
+    displayEstimatedCost(total);
+    console.log(total);
+};
+
+// {date: '2023/07/16', destinationID: 8, duration: 5, id: 211, status: 'pending', …}
+// date: "2023/07/16"
+// destinationID: 8
+// duration: 5
+// id: 211
+// status: "pending"
+// suggestedActivities: []
+// travelers: 2
+// userID: 2
+ 
+// {id: 8, destination: 'Tokyo, Japan', estimatedLodgingCostPerDay: 125, estimatedFlightCostPerPerson: 1000, image: 'https://images.unsplash.com/photo-1540959733332-ea…cHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80', …}
+// estimatedFlightCostPerPerson: 1000
+// estimatedLodgingCostPerDay: 125
+// id: 8
