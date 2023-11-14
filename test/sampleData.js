@@ -1,5 +1,4 @@
-export default {
-    sampleTravelers: [
+export const sampleTravelers = [
        {
         id: 1,
         name: 'Rachel Vaughten',
@@ -50,9 +49,9 @@ export default {
        name: 'Emalee Poellot',
        travelerType: 'thrill-seeker'
       },   
-    ],
+    ];
 
-    sampleDestinations: [
+export const sampleDestinations = [
         {
             alt: 'city with boats on the water during the day time',
             destination: 'Stockholm, Sweden',
@@ -142,9 +141,9 @@ export default {
             image: 
             "https://images.unsplash.com/photo-1549471156-52ee71691122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
         },
-    ],
+    ];
 
-    sampleTrips: [
+export const sampleTrips = [
         {
             date: '2022/09/09',
             destinationID: 1,
@@ -173,7 +172,7 @@ export default {
             status: 'pending',
             suggestedActivities: [],
             travelers: 1,
-            userID: 7,
+            userID: 1,
         },
         {
             date: '2021/04/04',
@@ -193,7 +192,7 @@ export default {
             status: 'approved',
             suggestedActivities: [],
             travelers: 2,
-            userID: 3,
+            userID: 1,
         },
         {
             date: '2022/10/10',
@@ -246,5 +245,4 @@ export default {
             userID: 10,
         },
 
-    ]
-};
+    ];
