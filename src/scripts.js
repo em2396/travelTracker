@@ -1,5 +1,5 @@
 //Imports Here:
-import { fetchTravelerInfo, submitNewTrip } from './apiCalls';
+import { fetchTravelerInfo } from './apiCalls';
 import { findCurrentId, upcoming, past, pending, newTrip } from './data-model';
 import './css/styles.css';
 import { displayPast, displayUpcoming, displayPending } from './domUppdates';
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', function() {
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
         allDestinations = values[2].destinations;
-
+        console.log(allTrips)
         const picker = datepicker(dateInput, {
             onSelect: (instance, date) => {
               formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
@@ -40,13 +40,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
-    findCurrentId();
+    findCurrentId(username.value);
 });
 
 submitButton.addEventListener('keydown', function(event) {
     event.preventDefault();
     if (event.code === 'Enter' || event.code === 'Space') {
-        findCurrentId();
+        findCurrentId(username.value);
     }
 });
 

@@ -1,6 +1,6 @@
 import { currentTraveler } from './data-model.js'
 
-const userDash = document.querySelector('#userDash');
+export const userDash = document.querySelector('#userDash');
 export const pastTravel = document.querySelector('#pastTravel');
 export const pendingTravel = document.querySelector('#pendingTravel');
 export const upcomingTravel = document.querySelector('#upcomingTravel');
