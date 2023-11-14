@@ -15,18 +15,18 @@ export let past = [];
 export let pending = [];
 export let tripsThisYear;
 export let destinationsThisYear;
-let currentId;
+export let currentId;
 let currentTravelerTrips;
 
 //Functions Here:
-export const findCurrentId = () => {
-    let splitValues = username.value.split('traveler')
+export const findCurrentId = (username) => {
+    let splitValues = username.split('traveler')
     currentId = splitValues[1]
     userLogsIn(currentId)
     return currentId;
 };
 
-export const userLogsIn = () => {
+const userLogsIn = (currentId) => {
     if (username.value === `traveler${currentId}` && password.value === 'travel') {
         login.classList.add('hidden');
         travelInfo.classList.remove('hidden');
@@ -43,7 +43,7 @@ const findCurrentTraveler = allTravelers => {
     return currentTraveler;
 };
 
-export const travelerTripData = (currentTraveler, trips) => {
+const travelerTripData = (currentTraveler, trips) => {
     currentTravelerTrips = trips.filter(element => {
         return element.userID === currentTraveler.id;
     })
@@ -52,7 +52,7 @@ export const travelerTripData = (currentTraveler, trips) => {
     return currentTravelerTrips;
 }
 
-export const filterTripByDate = travelerTrips => {
+const filterTripByDate = travelerTrips => {
     const todaysDate = new Date();
     travelerTrips.forEach(element => {
         const tripDate = new Date(element.date);
@@ -67,7 +67,7 @@ export const filterTripByDate = travelerTrips => {
     findTripsThisYear(currentTravelerTrips);
 };
 
-export const findTripsThisYear = travelerTrips => {
+const findTripsThisYear = travelerTrips => {
     tripsThisYear = travelerTrips.reduce((acc, current) => {
         const tripYear = current.date.slice(0, 4);
         if (tripYear == 2020) {
@@ -78,7 +78,7 @@ export const findTripsThisYear = travelerTrips => {
     findDestinationsThisYear(tripsThisYear, allDestinations);
 };
     
-export const findDestinationsThisYear = (tripsThisYear, destinations) => {
+const findDestinationsThisYear = (tripsThisYear, destinations) => {
     destinationsThisYear = tripsThisYear.reduce((acc, trip) => {
         const destination = destinations.find(dest => dest.id === trip.destinationID);
         if (destination) {
@@ -89,7 +89,7 @@ export const findDestinationsThisYear = (tripsThisYear, destinations) => {
     calculateCost(destinationsThisYear);
 };
 
-export const calculateCost = destinations => {
+const calculateCost = destinations => {
     let total;
     tripsThisYear.reduce((acc, current) => {
         destinations.find(element => {
@@ -138,7 +138,7 @@ export const newTrip = (button) => {
     };
 };
 
-export const estimateNewTripCost = tripInfo => {
+const estimateNewTripCost = tripInfo => {
     let total;
     const destCost = allDestinations.find(element => {
         return element.id === tripInfo.destinationID
@@ -149,17 +149,3 @@ export const estimateNewTripCost = tripInfo => {
     console.log(total);
 };
 
-// {date: '2023/07/16', destinationID: 8, duration: 5, id: 211, status: 'pending', …}
-// date: "2023/07/16"
-// destinationID: 8
-// duration: 5
-// id: 211
-// status: "pending"
-// suggestedActivities: []
-// travelers: 2
-// userID: 2
- 
-// {id: 8, destination: 'Tokyo, Japan', estimatedLodgingCostPerDay: 125, estimatedFlightCostPerPerson: 1000, image: 'https://images.unsplash.com/photo-1540959733332-ea…cHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80', …}
-// estimatedFlightCostPerPerson: 1000
-// estimatedLodgingCostPerDay: 125
-// id: 8

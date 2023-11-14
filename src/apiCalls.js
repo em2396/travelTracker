@@ -1,13 +1,6 @@
-// export const singleTraveler = 'http://localhost:3001/api/v1/travelers'; //interpolate a /${id} GET
-// export const allTrips = 'http://localhost:3001/api/v1/trips'; //GET
-// export const allDestinations = 'http://localhost:3001/api/v1/destinations'; //GET
-// export const newTrip = 'http://localhost:3001/api/v1/trips' //when the add new trip is clicked, this is initiated
-// export const newDestination = 'http://localhost:3001/api/v1/destinations';
-// export const modifySingleTrip = 'http://localhost:3001/api/v1/updateTrip';
-
-import { currentTraveler, past, upcoming, pending } from "./data-model"
+import { past, upcoming, pending } from "./data-model"
 import { displayFirst } from "./domUppdates";
-import { allDestinations, allTrips} from "./scripts"
+import {  allTrips } from "./scripts"
 
 export const urls = ['http://localhost:3001/api/v1/travelers','http://localhost:3001/api/v1/trips', 'http://localhost:3001/api/v1/destinations']
 
