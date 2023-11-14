@@ -1,12 +1,7 @@
 //Imports Here: 
 import { allTravelersData, allTrips, allDestinations } from "./scripts";
-import { displayFirst, displayTotalCost, dropdownDestinations, displayEstimatedCost } from "./domUppdates";
+import { displayFirst, displayTotalCost, dropdownDestinations, displayEstimatedCost, hideLoginWindow } from "./domUppdates";
 import { sendNewTrip } from "./apiCalls";
-
-//QuerySelectors Here: 
-const login = document.querySelector('.login');
-const loginWindow = document.querySelector('.login-window');
-const travelInfo = document.querySelector('.travel-info');
 
 //Variables Here:
 export let currentTraveler;
@@ -15,25 +10,25 @@ export let past = [];
 export let pending = [];
 export let tripsThisYear;
 export let destinationsThisYear;
-export let currentId;
+let currentId;
 let currentTravelerTrips;
 
 //Functions Here:
 export const findCurrentId = (username) => {
     let splitValues = username.split('traveler')
     currentId = splitValues[1]
-    userLogsIn(currentId)
+    userLogsIn(currentId, username, password)
     return currentId;
 };
 
 const userLogsIn = (currentId) => {
     if (username.value === `traveler${currentId}` && password.value === 'travel') {
-        login.classList.add('hidden');
-        travelInfo.classList.remove('hidden');
+        hideLoginWindow();
        return  findCurrentTraveler(allTravelersData);
+    } else {
+        alert('Wrong username or password');
     }
 };
-//^^^^^Refactor to move DOM updates
 
 const findCurrentTraveler = allTravelers => {
     currentTraveler = allTravelers.find(user => {
@@ -46,11 +41,10 @@ const findCurrentTraveler = allTravelers => {
 const travelerTripData = (currentTraveler, trips) => {
     currentTravelerTrips = trips.filter(element => {
         return element.userID === currentTraveler.id;
-    })
-    console.log(currentTravelerTrips, 'updated')
+    });
     filterTripByDate(currentTravelerTrips);
     return currentTravelerTrips;
-}
+};
 
 const filterTripByDate = travelerTrips => {
     const todaysDate = new Date();
