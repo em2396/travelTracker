@@ -34,8 +34,8 @@
       <aside class="content" id="dashboard">
         <h1 tabindex="0">Dashboard</h1>
         <h2 id="userDash" tabindex="0">Username</h2>
+        <h3 tabindex="0">Add New Trip: </h1>
         <section class="new-trip">
-          <h1 tabindex="0">Add New Trip: </h1>
           <label for="dateInput" class="new-trip-labels">Enter Date:
             <input class="new-trip-input" type="text" placeholder="YYYY/MM/DD" id="dateInput" required/>
           </label>
@@ -49,6 +49,7 @@
           <input list="destinationList" id="chooseDestination" name="chooseDestination">
           <datalist id="destinationList"></datalist>
           <button id="estimatedCostButton">See Estimated Cost</button>
+          <div id="popup" class="popup">Added!</div>
           <button id="submitTrip">Submit</button>
           <p id="estimatedCost" tabindex="0"></p>
         </section>
@@ -64,7 +65,7 @@
           <button id="pendingButton">Pending</button>
           <button id="pastButton">Past</button>
         </section>
-        <section>
+        <section class="all-trips">
           <p id="pastTravel" tabindex="0"></p>
           <p id="pendingTravel" tabindex="0"></p>
           <p id="upcomingTravel" tabindex="0"></p>

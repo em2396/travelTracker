@@ -1,6 +1,6 @@
 import { past, upcoming, pending } from "./data-model"
-import { displayFirst } from "./domUppdates";
-import {  allTrips } from "./scripts"
+import { displayFirst, displayPopup } from "./domUppdates";
+import {  allDestinations, allTrips } from "./scripts"
 
 export const urls = ['http://localhost:3001/api/v1/travelers','http://localhost:3001/api/v1/trips', 'http://localhost:3001/api/v1/destinations']
 
@@ -32,12 +32,10 @@ export const sendNewTrip = tripInfo => {
        return response.json()
     })
     .then (json => {
-        console.log(json, 'json')
         allTrips.push(json);
-        console.log(allTrips);
         pending.push(tripInfo);
-        console.log(pending, 'new pending')
-        displayFirst(past, upcoming, pending);
+        displayFirst(past, upcoming, pending, allDestinations);
+        displayPopup();
     })
 };
 
