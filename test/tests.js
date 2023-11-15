@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { sampleTravelers, sampleDestinations, sampleTrips } from './sampleData';
-import { findCurrentId, userLogsIn, currentId, username, password, wrongPassword, wrongUsername, findCurrentTraveler, travelerTripData, filterTripByDate, currentTravelerTrips, upcoming, past, pending } from './sampleFunctions';
+import { findCurrentId, userLogsIn, currentId, username, password, wrongPassword, wrongUsername, findCurrentTraveler, travelerTripData, filterTripByDate, upcoming, past, pending, findTripsThisYear, tripsThisYear, findDestinationsThisYear, calculateCost } from './sampleFunctions';
 // console.log(userSample)
 
 describe('Find current ID', function() {
@@ -178,9 +178,148 @@ describe('Filter current travelers trip by date', function() {
             travelers: 2,
             userID: 1
           }];
-        let pushValues = filterTripByDate(currentTrips);
 
-        expect(past).to.equal(samplePast);
-    }) 
+        expect(past).to.deep.equal(samplePast);
+    });
+    it('pending  should be an array with one object', () => {
+        let samplePending = [{
+            date: '2023/11/11',
+            destinationID: 1,
+            duration: 10,
+            id: 3,
+            status: 'pending',
+            suggestedActivities: [],
+            travelers: 1,
+            userID: 1
+          }];
+
+        expect(pending).to.deep.equal(samplePending);
+    });  
 });
 
+describe('Find trips for current year (2020)', function() {
+  it('travelerTrips should be an array of objects of trips in 2020', () => {
+    let tripsWith2020 = [
+      {
+        date: '2020/09/09',
+        destinationID: 1,
+        duration: 8,
+        id: 1,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 1,
+        userID: 1
+      },
+      {
+        date: '2021/06/16',
+        destinationID: 5,
+        duration: 8,
+        id: 5,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 2,
+        userID: 1
+      }
+    ];
+  let resultWith2020 = [{
+    date: '2020/09/09',
+    destinationID: 1,
+    duration: 8,
+    id: 1,
+    status: 'approved',
+    suggestedActivities: [],
+    travelers: 1,
+    userID: 1
+  }];
+  let allCurrentTrips = findTripsThisYear(tripsWith2020);
+
+   expect(allCurrentTrips).to.deep.equal(resultWith2020)
+  });
+
+  it('should return a string of no trips if traveler did not take any trips', () => {
+    let tripsWithout2020 = [
+      {
+        date: '2022/09/09',
+        destinationID: 1,
+        duration: 8,
+        id: 1,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 1,
+        userID: 1
+      },
+      {
+        date: '2021/06/16',
+        destinationID: 5,
+        duration: 8,
+        id: 5,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 2,
+        userID: 1
+      }
+    ];
+    let tripsWithout = findTripsThisYear(tripsWithout2020);
+
+    expect(tripsWithout).to.equal('No trips this year!');
+  });
+});
+
+describe('Find destinations for the year 2020', function() {
+  it('should create an array of objects of destinations', () => {
+    let trip1 = [{
+        date: '2020/09/09',
+        destinationID: 1,
+        duration: 8,
+        id: 1,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 1,
+        userID: 1
+      }
+    ];
+    let dest = findDestinationsThisYear(trip1, sampleDestinations)
+    let outputDestination = [sampleDestinations[0]];
+
+    expect(dest).to.deep.equal(outputDestination);
+  });
+  it('should not find any ids that match', () => {
+    let trip2 = [ 
+      {
+        date: '2020/09/09',
+        destinationID: 88,
+        duration: 8,
+        id: 1,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 1,
+        userID: 1
+       }
+    ]
+    let dest2 = findDestinationsThisYear(trip2, sampleDestinations);
+
+    expect(dest2).to.equal('There are no trips that match')
+  });
+});
+
+describe('Calculcate cost for the year 2020', () => {
+  it('should return a number that calculates how much the trips were in 2020', () => {
+    
+    let tripsYear = [
+      {
+        date: '2020/09/09',
+        destinationID: 1,
+        duration: 8,
+        id: 1,
+        status: 'approved',
+        suggestedActivities: [],
+        travelers: 1,
+        userID: 1
+      }
+    ];
+    let destinationsToAdd = [sampleDestinations[0]]
+    let totalSample = calculateCost(destinationsToAdd, tripsYear);
+
+    expect(totalSample).to.equal(1739.1)
+  });
+});

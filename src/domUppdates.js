@@ -7,6 +7,8 @@ export const upcomingTravel = document.querySelector('#upcomingTravel');
 const totalSpending = document.querySelector('#totalSpending');
 const destinationList = document.querySelector('#destinationList');
 const estimatedCost = document.querySelector('#estimatedCost');
+const login = document.querySelector('.login');
+const travelInfo = document.querySelector('.travel-info');
 
 
 export const displayFirst = (past, upcoming, pending) => {
@@ -26,7 +28,12 @@ export const displayFirst = (past, upcoming, pending) => {
     pending.forEach(element => {
         pendingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
     });
-}
+};
+
+export const hideLoginWindow = () => {
+    login.classList.add('hidden');
+    travelInfo.classList.remove('hidden');
+};
 
 
 export const displayPast = (past) => {
