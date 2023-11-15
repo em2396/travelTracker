@@ -53,10 +53,24 @@ body {
   width: 70%;
   height: 80vh;
   text-align: center;
+  align-content: center;
   background-color: white;
   @media (max-width: 750px) {
     width: 100%;
   }
+}
+
+.all-trips, img {
+  display: flex;
+  align-content: center;
+  width: 70%;
+  height: 25vh;
+  overflow-y: scroll;
+  border: 2px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  margin-left: 40px;
+  margin-bottom: 5px;;
 }
 
 /* Login page */
@@ -173,6 +187,21 @@ body {
   height: 30px;
   cursor: pointer;
 }
+
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 20px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  z-index: 1;
+}
+
 
 
 
