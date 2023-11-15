@@ -12,6 +12,8 @@ export let currentTravelerTrips;
 export let upcoming =[];
 export let past = [];
 export let pending = [];
+export let tripsThisYear;
+export let destinationsThisYear;
 
 export const findCurrentId = (username) => {
     let splitValues = username.split('traveler')
@@ -57,3 +59,50 @@ export const filterTripByDate = travelerTrips => {
         }
     });
 };
+
+export const findTripsThisYear = travelerTrips => {
+   tripsThisYear = travelerTrips.reduce((acc, current) => {
+        const tripYear = current.date.slice(0, 4);
+        if (tripYear == 2020) {
+            acc.push(current);
+        }
+        return acc;
+    },[]);
+    if (tripsThisYear.length === 0) {
+        return 'No trips this year!'
+    } else {
+        return tripsThisYear;
+    };
+ };
+
+ export const findDestinationsThisYear = (tripsThisYear, destinations) => {
+    destinationsThisYear = tripsThisYear.reduce((acc, trip) => {
+        const destination = destinations.find(dest => dest.id === trip.destinationID);
+        if (destination) {
+            acc.push(destination);
+        };
+        return acc;
+    }, []);
+    if(destinationsThisYear.length >= 1) {
+        return destinationsThisYear;
+    } else {
+        return 'There are no trips that match'
+    }
+};
+
+export const calculateCost = (destinations, tripYear) => {
+    let total;
+    tripYear.reduce((acc, current) => {
+        destinations.find(element => {
+           const calculate = element.id === current.destinationID
+            if (calculate) {
+                acc += ((current.travelers * element.estimatedFlightCostPerPerson) + (element.estimatedLodgingCostPerDay * current.duration))
+            } 
+        })
+        total = acc;
+        return acc;
+    }, 1)
+    total += (total * .1);
+    return total
+};
+
