@@ -69,7 +69,11 @@ const findTripsThisYear = travelerTrips => {
         }
         return acc;
     },[]);
-    findDestinationsThisYear(tripsThisYear, allDestinations);
+    if(tripsThisYear.length === 0) {
+        return 'Traveler took no trips this year';
+    } else {
+        findDestinationsThisYear(tripsThisYear, allDestinations);
+    }
 };
     
 const findDestinationsThisYear = (tripsThisYear, destinations) => {
