@@ -26,6 +26,8 @@ The Travel Tracker webpage is designed to enhance the travel experience by provi
 I am a front-end developer currently attending Turing School of Software and Design. I am in Mod 2 of the program where focus is on API's and iterators using vanilla JS. The project was completed week 6 of 6 in Mod 2.
 
 ## 🎥 Preview 
+![travelTracker]("https://user-images.githubusercontent.com/116819092/283169009-9337c9d1-883e-47ce-8626-82d1015f9771.png")
+
 
 ## 🔌 Server Setup
 - Fork [this](https://github.com/em2396/travelTracker) repository. 
