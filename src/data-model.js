@@ -88,6 +88,7 @@ const findDestinationsThisYear = (tripsThisYear, destinations) => {
 };
 
 const calculateCost = destinations => {
+    let formattedTotal
     let total;
     tripsThisYear.reduce((acc, current) => {
         destinations.find(element => {
@@ -100,15 +101,14 @@ const calculateCost = destinations => {
         return acc;
     }, 1)
     total += (total * .1);
-    console.log(total);
-    displayFirst(past, upcoming, pending); 
-    displayTotalCost(total);
+    formattedTotal = total.toFixed(2);
+    displayFirst(past, upcoming, pending, allDestinations); 
+    displayTotalCost(formattedTotal);
     dropdownDestinations(allDestinations);
     return total
 };
 
 export const newTrip = (button) => {
-    console.log(allTrips, 'all trips');
     const destInput = allDestinations.find(element => {
        return element.destination === chooseDestination.value;
     });
@@ -137,13 +137,14 @@ export const newTrip = (button) => {
 };
 
 const estimateNewTripCost = tripInfo => {
+    let formattedTotal;
     let total;
     const destCost = allDestinations.find(element => {
         return element.id === tripInfo.destinationID
     });
     total = ((tripInfo.travelers * destCost.estimatedFlightCostPerPerson) + (destCost.estimatedLodgingCostPerDay * tripInfo.duration));
     total += (total * .1);
-    displayEstimatedCost(total);
-    console.log(total);
+    formattedTotal = total.toFixed(2);
+    displayEstimatedCost(formattedTotal);
 };
 

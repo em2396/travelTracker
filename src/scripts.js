@@ -11,7 +11,8 @@ const pendingButton = document.querySelector('#pendingButton');
 const pastButton = document.querySelector('#pastButton');
 const submitTrip = document.querySelector('#submitTrip');
 const estimatedCostButton = document.querySelector('#estimatedCostButton');
-
+const showPassword = document.querySelector('#showPassword');
+const passwordInput = document.querySelector('#password');
 
 //Variable Here;
 export let allTravelersData; 
@@ -26,7 +27,6 @@ window.addEventListener('DOMContentLoaded', function() {
         allTravelersData = values[0].travelers;
         allTrips = values[1].trips;
         allDestinations = values[2].destinations;
-        console.log(allTrips)
         const picker = datepicker(dateInput, {
             onSelect: (instance, date) => {
               formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
@@ -50,13 +50,21 @@ submitButton.addEventListener('keydown', function(event) {
     }
 });
 
+showPassword.addEventListener('click', function() {
+    console.log('here')
+    if (showPassword.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    };
+});
+
 upcomingButton.addEventListener('click', function() {
     displayUpcoming(upcoming);
 });
 
 upcomingButton.addEventListener('keydown', function(event) {
     if (event.key === 'Enter' || event.key === 'Space') {
-        console.log('keyed>>>>>>>>.')
         displayUpcoming(upcoming);
     };
 });

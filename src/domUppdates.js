@@ -9,9 +9,10 @@ const destinationList = document.querySelector('#destinationList');
 const estimatedCost = document.querySelector('#estimatedCost');
 const login = document.querySelector('.login');
 const travelInfo = document.querySelector('.travel-info');
+const popup = document.querySelector('#popup');
 
 
-export const displayFirst = (past, upcoming, pending) => {
+export const displayFirst = (past, upcoming, pending, allDestinations) => {
     userDash.innerText = currentTraveler.name;
     pendingTravel.classList.add('hidden');
     upcomingTravel.classList.add('hidden');
@@ -19,14 +20,24 @@ export const displayFirst = (past, upcoming, pending) => {
     pendingTravel.innerHTML = '';
     pastTravel.innerHTML = '';
     upcomingTravel.innerHTML = '';
+    dateInput.value = '';
+    durationInput.value = '';
+    numOfTravelers.value = '';
+    chooseDestination.value = '';
     past.forEach(element => {
-        pastTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}. `;
+        const destination = allDestinations.find(dest => dest.id === element.destinationID);
+        pastTravel.innerHTML += `Date of Trip: ${element.date} Destination: ${destination.destination}. 
+        <img src="${destination.image}" alt=${destination.alt}width="200" height="150">`;
     });
     upcoming.forEach(element => {
-        upcomingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
+        const destination = allDestinations.find(dest => dest.id === element.destinationID);
+        upcomingTravel.innerHTML += `Date of Trip: ${element.date} Destination: ${destination.destination}. 
+        <img src="${destination.image}" alt=${destination.alt}width="200" height="150">`;
     });
     pending.forEach(element => {
-        pendingTravel.innerHTML += `The date of the trip is ${element.date} and the destination id is ${element.destinationID}`;
+        const destination = allDestinations.find(dest => dest.id === element.destinationID);
+        pendingTravel.innerHTML += `Date of Trip: ${element.date} Destination: ${destination.destination}. 
+        <img src="${destination.image}" alt=${destination.alt}width="200" height="150">`;
     });
 };
 
@@ -37,7 +48,6 @@ export const hideLoginWindow = () => {
 
 
 export const displayPast = (past) => {
-    console.log(past, 'past')
     userDash.innerText = currentTraveler.name;
     pendingTravel.classList.add('hidden');
     upcomingTravel.classList.add('hidden');
@@ -52,7 +62,6 @@ export const displayUpcoming = (upcoming) => {
 };
 
 export const displayPending = pending => {
-    console.log(pending, 'pending')
     userDash.innerText = currentTraveler.name;
     pendingTravel.classList.remove('hidden');
     upcomingTravel.classList.add('hidden');
@@ -72,3 +81,10 @@ export const dropdownDestinations = destinationAll => {
 export const displayEstimatedCost = total => {
     estimatedCost.innerHTML = `The estimated cost for your trip is: $${total}. Press submit to send to an agent.`
 };
+
+export const displayPopup = () => {
+    popup.style.display = 'block';
+    setTimeout(function() {
+        popup.style.display = 'none';
+    }, 2500);
+}
