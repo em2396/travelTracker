@@ -16,7 +16,7 @@
 
 ## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
 [Emalee Poellot](https://github.com/em2396) 
-
+![travelTracker Example](https://www.loom.com/share/3cc3fdd0a0be4dff8750fae74d95fc5f?sid=da0ec55b-f0c0-4e86-b0fd-580237f825c3)
 </div>
 
 ## 💭 Abstract
