@@ -15,6 +15,8 @@
 ![Datepicker.js](https://img.shields.io/badge/Datepicker.js-yellow?style=flat-square
 )
 
+</div>
+
 ## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
 [Emalee Poellot](https://github.com/em2396) 
 
